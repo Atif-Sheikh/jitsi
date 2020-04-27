@@ -69,10 +69,11 @@ function App() {
     <NavigationContainer >
     <Stack.Navigator initialRouteName="Home" independent={true}>
       <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
-      <Stack.Screen name="Meeting">
+      <Stack.Screen name="Meeting" component={Meeting} options={{headerShown: false}}/>
+      {/* <Stack.Screen name="Meeting" >
         {props => <Meeting {...props} />}
-      </Stack.Screen>
-      <Stack.Screen name="Room" component={Room} options={{title:'Back'}} />
+      </Stack.Screen> */}
+      <Stack.Screen name="Room" component={Room} options={{title:'Back'}} options={{headerShown: false}}/>
       {/* <Stack.Screen name="Meeting" component={Meeting} options={{headerShown: false}} /> */}
     </Stack.Navigator>
     </NavigationContainer>

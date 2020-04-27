@@ -95,19 +95,19 @@ createMeeting = (id) =>{
                       placeholder='Pick Name'
                       // returnKeyType='next'
                       onChangeText={value => this.setState({ pickName: value })}
-                      style={{height:50}}
+                      style={{height:60}}
                       value={this.state.pickName}
 				            />  
                     <TouchableOpacity 
                     style={[styles.botton,{backgroundColor: this.state.pickName ? '#008000' : '#ccc'}]} 
                     onPress={()=>{
-                      this.state.pickName.length > 1 &&  this.createMeeting(this.state.pickName)
+                      this.state.pickName.length >= 1 &&  this.createMeeting(this.state.pickName)
                     }} >
                         <Text style={{color:'#fff'}}> Create the meating </Text>
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity onPress={()=>{ this.conference() }}>
-                  <Text style={styles.bottomButton}> Join a meeting </Text>
+                  <Text style={styles.bottomButton}> rejoindre une réunion </Text>
                 </TouchableOpacity>
             </View>
         )

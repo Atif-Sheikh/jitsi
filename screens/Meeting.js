@@ -5,16 +5,14 @@ import JitsiMeet, { JitsiMeetView as RNJitsiMeetView } from 'react-native-jitsi-
 class JitsiMeetView extends React.Component {
 	constructor(props){
 		super(props);
-
+		
 	}
 
 	componentDidMount() {
         setTimeout(() => {
-			if(this.props.route.params.id = undefined){
-				this.props.navigation.goBack()
-			}else{
-				console.log('url',this.props.route.params.id)
+				console.log('url',this.props.route.params)
 				const url = `https://meet.jit.si/${this.props.route.params.id}`;
+				console.log(url,'urlll')
 				const userInfo = {
 					displayName: 'User',
 					email: 'user@example.com',
@@ -26,7 +24,7 @@ class JitsiMeetView extends React.Component {
 				}else{
 					JitsiMeet.call(url, userInfo);
 				}
-			}
+			
 
         /* Você também pode usar o JitsiMeet.audioCall (url) para chamadas apenas de áudio */
         /* Você pode terminar programaticamente a chamada com JitsiMeet.endCall () */

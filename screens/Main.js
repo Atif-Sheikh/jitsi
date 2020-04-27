@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View ,TextInput ,StyleSheet ,Image ,Switch ,TouchableOpacity} from "react-native";
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Text } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button,Icon, Left, Right, Body, Text } from 'native-base';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -44,7 +44,7 @@ export default class AnatomyExample extends Component {
                     <Text style={{color:'#fff',fontWeight:'bold',}}>Video</Text>
                     <Switch
                         trackColor={{ false: "#767577", true: "#81b0ff" }}
-                        thumbColor={this.stateisEnabled ? "#f5dd4b" : "#f4f3f4"}
+                        thumbColor={this.state.isEnabled ? "#f5dd4b" : "#f4f3f4"}
                         ios_backgroundColor="#3e3e3e"
                         onValueChange={this.toggleSwitch}
                         value={this.state.isEnabled}
@@ -74,9 +74,18 @@ export default class AnatomyExample extends Component {
           <FooterTab  style={{ backgroundColor: "#33ccff" }}>
               <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
                   <TouchableOpacity>
+                  <Image
+                      style={{height:20,width:20,alignSelf:'center'}}
+                      source={require('../assets/h2.png')}
+                  />
                     <Text style={{color:'#fff'}}>Recent</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
+                  <Image
+                      style={{height:20,width:20,alignSelf:'center'}}
+                      source={require('../assets/c1.png')}
+                  />
+                  {/* <Icon name='beer' /> */}
                     <Text  style={{color:'#fff'}}>calender</Text>
                   </TouchableOpacity>
               </View>

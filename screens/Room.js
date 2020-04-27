@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { Button, View ,StyleSheet ,Image} from 'react-native';
+import { Button, View ,StyleSheet ,Image,Text ,TouchableOpacity} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Container, Content, Icon, Header, Body } from 'native-base'
 import {  StackNavigator, DrawerItems, SafeAreaView } from 'react-navigation'
 // import { createDrawerNavigator } from 'react-navigation-drawer';
+import {
+  DrawerContentScrollView,
+  DrawerItemList,DrawerItem
+} from '@react-navigation/drawer';
+
 
 import Settings from './Settings'
 import Terms from './Terms'
@@ -16,13 +21,40 @@ import App from '../App'
 import Meetin from './Meeting'
 
 const Drawer = createDrawerNavigator();
+const  CustomDrawerContent=({navigation})=> {
+  return (
+    <DrawerContentScrollView >
+      <View style={{justifyContent:'center',width:'100%',alignItems:'center'}}> 
+         <Image style={{height:100,width:100}} source={require('../assets/profile.jpg')}/>
+      </View>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Settings')}} style={{marginVertical:15,flexDirection:'row',marginTop:40,width:'100%'}}>
+        <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/setting.jpg')}/>
+        <Text style={{fontWeight:'bold'}}> Settings</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Terms')}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+         <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/notification.png')}/>
+        <Text style={{fontWeight:'bold'}}> Terms</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Privacy')}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+      <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/notification.png')}/>
+        <Text style={{fontWeight:'bold'}}> Privacy</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Help')}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+      <Image style={{height:18,width:18,marginHorizontal:8}} source={require('../assets/help.png')}/>
+        <Text style={{fontWeight:'bold'}}> Help</Text>
+      </TouchableOpacity>
+      {/* <DrawerItemList {...props} /> */}
+    </DrawerContentScrollView>
+  );
+}
 
 class Room extends React.Component {
+
 
     render(){
         return (
             <NavigationContainer independent={true} >
-                <Drawer.Navigator initialRouteName="Main">
+                <Drawer.Navigator initialRouteName="Main" drawerContent={props => <CustomDrawerContent {...props}/>}>
                 <Drawer.Screen name="Main" component={Main} options={{drawerIcon: () => <Image style={{height:20,width:20}} source={require('../assets/conference-icon.png')}/> }}/>
                 <Drawer.Screen name="Settings" component={Settings} options={{drawerIcon: () => <Image style={{height:20,width:20}} source={require('../assets/setting.jpg')}/> }}/>
                 <Drawer.Screen name="Terms" component={Terms} options={{drawerIcon: () => <Image style={{height:20,width:20}} source={require('../assets/notification.png')}/> }}/>
