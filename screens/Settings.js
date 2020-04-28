@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#E8E8E8',
         borderRadius:5,
         padding:5,
-        marginHorizontal:5,
+        // marginHorizontal:5,
         fontWeight:'bold'
     },
     toggel:{

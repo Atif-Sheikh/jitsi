@@ -19,6 +19,7 @@ import Help from './Help'
 import Main from './Main'
 import App from '../App'
 import Meetin from './Meeting'
+import Home from './Home'
 
 const Drawer = createDrawerNavigator();
 const  CustomDrawerContent=({navigation})=> {
@@ -54,13 +55,14 @@ class Room extends React.Component {
     render(){
         return (
             <NavigationContainer independent={true} >
-                <Drawer.Navigator initialRouteName="Main" drawerContent={props => <CustomDrawerContent {...props}/>}>
-                <Drawer.Screen name="Main" component={Main} options={{drawerIcon: () => <Image style={{height:20,width:20}} source={require('../assets/conference-icon.png')}/> }}/>
-                <Drawer.Screen name="Settings" component={Settings} options={{drawerIcon: () => <Image style={{height:20,width:20}} source={require('../assets/setting.jpg')}/> }}/>
-                <Drawer.Screen name="Terms" component={Terms} options={{drawerIcon: () => <Image style={{height:20,width:20}} source={require('../assets/notification.png')}/> }}/>
-                <Drawer.Screen name="Privacy" component={Privacy} options={{drawerIcon: () => <Image style={{height:20,width:20}} source={require('../assets/notification.png')}/> }}/>
-                <Drawer.Screen name="Help" component={Help} options={{drawerIcon: () => <Image style={{height:20,width:20}} source={require('../assets/help.png')}/> }}/>
-                <Drawer.Screen name="Meeting" component={Meetin} options={{drawerLabel: () => null,title: null,drawerIcon: () => null,}}/>
+                <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawerContent {...props}/>}>
+                <Drawer.Screen name="Main" component={Main} />
+                <Drawer.Screen name="Home" component={Home} />
+                <Drawer.Screen name="Settings" component={Settings} />
+                <Drawer.Screen name="Terms" component={Terms} />
+                <Drawer.Screen name="Privacy" component={Privacy} />
+                <Drawer.Screen name="Help" component={Help} />
+                <Drawer.Screen name="Meeting" component={Meetin} />
                 </Drawer.Navigator>
           </NavigationContainer>
         )

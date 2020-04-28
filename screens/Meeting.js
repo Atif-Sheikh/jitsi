@@ -14,7 +14,7 @@ class JitsiMeetView extends React.Component {
 				const url = `https://meet.jit.si/${this.props.route.params.id}`;
 				console.log(url,'urlll')
 				const userInfo = {
-					displayName: 'User',
+					displayName: this.props.route.params.name,
 					email: 'user@example.com',
 					avatar: 'https:/gravatar.com/avatar/abc123',
 				};

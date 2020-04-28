@@ -7,7 +7,7 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button,Icon, Left
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import Meeting from './Meeting'
+import ToggleSwitch from 'toggle-switch-react-native'
 
 export default class AnatomyExample extends Component {
   constructor(props){
@@ -25,13 +25,13 @@ export default class AnatomyExample extends Component {
 
     jionConference = (id) =>{
       //vevify id here
-      this.props.navigation.navigate('Meeting',{id,type:this.state.isEnabled})
+      this.props.navigation.navigate('Meeting',{id,type:this.state.isEnabled,name:'new user'})
       this.setState({roomName:''})
     }
   render() {
     return (
       <Container>
-        <Header style={{ backgroundColor: "#33ccff" }}>
+        <Header style={{ backgroundColor: "#2ea1f8" }} androidStatusBarColor="#2ea1f8">
           <Left>
             <TouchableOpacity onPress={()=>{this.props.navigation.openDrawer()}}>
             <Image
@@ -41,15 +41,17 @@ export default class AnatomyExample extends Component {
             </TouchableOpacity>
           </Left>
                 <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:'50%'}}>
-                    <Text style={{color:'#fff',fontWeight:'bold',}}>Video</Text>
-                    <Switch
-                        trackColor={{ false: "#767577", true: "#81b0ff" }}
-                        thumbColor={this.state.isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                        ios_backgroundColor="#3e3e3e"
-                        onValueChange={this.toggleSwitch}
-                        value={this.state.isEnabled}
+                    <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Video</Text>
+                    <ToggleSwitch
+                      isOn={this.state.isEnabled}
+                      onColor=" #2196c4"
+                      offColor="#2196c4"
+                      thumbColor={this.state.isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                      labelStyle={{ color: "black", fontWeight: "900",}}
+                      size="medium"
+                      onToggle={(isOn) => this.setState({isEnabled:isOn})}
                     />
-                    <Text style={{color:'#fff',fontWeight:'bold'}}>Voice</Text>
+                    <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Voice</Text>
                 </View>
           <Right />
         </Header>
@@ -71,19 +73,26 @@ export default class AnatomyExample extends Component {
           </TouchableOpacity> : <></>}
         </Content>
         <Footer>
-          <FooterTab  style={{ backgroundColor: "#33ccff" }}>
+          <FooterTab  style={{ backgroundColor: "#2ea1f8" }}>
               <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
                   <TouchableOpacity>
                   <Image
                       style={{height:20,width:20,alignSelf:'center'}}
-                      source={require('../assets/h2.png')}
+                      source={require('../assets/h5.png')}
                   />
                     <Text style={{color:'#fff'}}>Recent</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Home')}}>
+                  <Image
+                      style={{height:20,width:20,alignSelf:'center'}}
+                      source={require('../assets/home.png')}
+                  />
+                    <Text style={{color:'#fff'}}>Home</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
                   <Image
                       style={{height:20,width:20,alignSelf:'center'}}
-                      source={require('../assets/c1.png')}
+                      source={require('../assets/c5.png')}
                   />
                   {/* <Icon name='beer' /> */}
                     <Text  style={{color:'#fff'}}>calender</Text>
