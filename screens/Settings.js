@@ -106,7 +106,7 @@ export default class Settings extends Component {
                 </View>
           <Right />
         </Header>
-            <View style={{justifyContent:'center'}}>
+            <View style={{justifyContent:'center', marginTop: 10}}>
                 <View style={{marginHorizontal:8}}>
                     <Text style={styles.Heading}>Profile</Text>
                     <Text style={{padding:2,fontWeight:'bold',marginVertical:5}}>Display name</Text>
@@ -120,7 +120,7 @@ export default class Settings extends Component {
                         style={styles.textInput}
                         /> 
                     </View>
-                    <Text  style={{padding:2,fontWeight:'bold',marginVertical:5}}>Email</Text>
+                    <Text  style={{padding:2, marginTop: 5, fontWeight:'bold',marginVertical:5}}>Email</Text>
                     <View style={{}}>
                     <TextInput
                         label='Email'
@@ -188,7 +188,8 @@ const styles = StyleSheet.create({
         backgroundColor:'#E8E8E8',
         borderRadius:5,
         padding:5,
-        // marginHorizontal:5,
+        marginHorizontal:5,
+        marginTop: 10,
         fontWeight:'bold'
     },
     toggel:{
