@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View ,StyleSheet ,Switch ,TextInput ,AsyncStorage ,} from 'react-native'
+import { Text, View ,StyleSheet ,Switch ,TextInput ,AsyncStorage ,TouchableOpacity,Image} from 'react-native'
+import { Container, Header, Title, Content, Footer, FooterTab, Button,Icon, Left, Right, Body, } from 'native-base';
 
 export default class Settings extends Component {
     state={
@@ -90,6 +91,21 @@ export default class Settings extends Component {
     }
     render() {
         return (
+           <Container>
+               <Header style={{ backgroundColor: "#2ea1f8" }} androidStatusBarColor="#2ea1f8">
+          <Left>
+            <TouchableOpacity onPress={()=>{this.props.navigation.goBack()}}>
+            <Image
+                style={{height:100,width:20, marginBottom:'50%'}}
+                source={require('../assets/ar.png')}
+            />
+            </TouchableOpacity>
+          </Left>
+                <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:'28%'}}>
+                    <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:18}}>Settings</Text>
+                </View>
+          <Right />
+        </Header>
             <View style={{justifyContent:'center'}}>
                 <View style={{marginHorizontal:8}}>
                     <Text style={styles.Heading}>Profile</Text>
@@ -160,6 +176,7 @@ export default class Settings extends Component {
                     </View>
                 </View>
             </View>
+            </Container>  
         )
     }
 }

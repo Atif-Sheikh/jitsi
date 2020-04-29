@@ -75,13 +75,13 @@ export default class AnatomyExample extends Component {
         <Footer>
           <FooterTab  style={{ backgroundColor: "#2ea1f8" }}>
               <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
-                  <TouchableOpacity>
+                  {/* <TouchableOpacity>
                   <Image
                       style={{height:20,width:20,alignSelf:'center'}}
                       source={require('../assets/h5.png')}
                   />
                     <Text style={{color:'#fff'}}>Recent</Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Home')}}>
                   <Image
                       style={{height:20,width:20,alignSelf:'center'}}
