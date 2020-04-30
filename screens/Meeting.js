@@ -43,7 +43,7 @@ class JitsiMeetView extends React.Component {
 	}
 
 	onConferenceTerminated = () => {
-		this.props.navigation.goBack()
+		this.props.navigation.navigate('Home')
 	}
 
 	render() {

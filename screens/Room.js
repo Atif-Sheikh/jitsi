@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Button, View ,StyleSheet ,Image,Text ,TouchableOpacity} from 'react-native';
+import React ,{ useCallback } from 'react';
+import { Button, View ,StyleSheet ,Image,Text ,TouchableOpacity ,Linking} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -21,7 +21,10 @@ import App from '../App'
 import Meetin from './Meeting'
 import Home from './Home'
 
+
+
 const Drawer = createDrawerNavigator();
+
 const  CustomDrawerContent=({navigation})=> {
   return (
     <DrawerContentScrollView >
@@ -32,15 +35,15 @@ const  CustomDrawerContent=({navigation})=> {
         <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/setting.jpg')}/>
         <Text style={{fontWeight:'bold'}}> Settings</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{navigation.navigate('Terms')}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+      <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
          <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/notification.png')}/>
         <Text style={{fontWeight:'bold'}}> Terms</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{navigation.navigate('Privacy')}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+      <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
       <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/notification.png')}/>
         <Text style={{fontWeight:'bold'}}> Privacy</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{navigation.navigate('Help')}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+      <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
       <Image style={{height:18,width:18,marginHorizontal:8}} source={require('../assets/help.png')}/>
         <Text style={{fontWeight:'bold'}}> Help</Text>
       </TouchableOpacity>
@@ -50,7 +53,7 @@ const  CustomDrawerContent=({navigation})=> {
 }
 
 class Room extends React.Component {
-
+  URL = "https://google.com";
 
     render(){
         return (
