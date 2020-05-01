@@ -28,24 +28,24 @@ const Drawer = createDrawerNavigator();
 const  CustomDrawerContent=({navigation})=> {
   return (
     <DrawerContentScrollView >
-      <View style={{justifyContent:'center',width:'100%',alignItems:'center'}}> 
-         <Image style={{height:100,width:100}} source={require('../assets/profile.jpg')}/>
+      <View style={{justifyContent:'center',width:'100%',alignItems:'center',backgroundColor:'#2ea1f8',height:120,marginTop:-5}}> 
+         <Image style={{height:100,width:100,borderRadius:50}} source={require('../assets/p1.png')}/>
       </View>
-      <TouchableOpacity onPress={()=>{navigation.navigate('Settings')}} style={{marginVertical:15,flexDirection:'row',marginTop:40,width:'100%'}}>
-        <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/setting.jpg')}/>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Settings')}} style={{marginVertical:15,flexDirection:'row',marginTop:30,width:'100%'}}>
+        <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/s3.png')}/>
         <Text style={{fontWeight:'bold'}}> Settings</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
-         <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/notification.png')}/>
+         <Image style={{height:18,width:18,marginHorizontal:8}} source={require('../assets/n4.png')}/>
         <Text style={{fontWeight:'bold'}}> Terms</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
-      <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/notification.png')}/>
+      <Image style={{height:18,width:18,marginHorizontal:8}} source={require('../assets/n4.png')}/>
         <Text style={{fontWeight:'bold'}}> Privacy</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
-      <Image style={{height:18,width:18,marginHorizontal:8}} source={require('../assets/help.png')}/>
-        <Text style={{fontWeight:'bold'}}> Help</Text>
+      <Image style={{height:25,width:25,marginHorizontal:7}} source={require('../assets/q2.png')}/>
+        <Text style={{fontWeight:'bold',marginTop:1}}> Help</Text>
       </TouchableOpacity>
       {/* <DrawerItemList {...props} /> */}
     </DrawerContentScrollView>

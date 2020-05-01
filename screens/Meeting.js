@@ -38,8 +38,8 @@ class JitsiMeetView extends React.Component {
 
 	// Jitsi Update Timeout needs to be called every 10 seconds to make sure
 	// call is not ended and is available to web users.
-	onConferenceJoined = () => {
-	
+	onConferenceJoined = (e) => {
+	console.log(e.jitsiTimeout,'this.jitsiTimeout')
 	}
 
 	onConferenceTerminated = () => {
