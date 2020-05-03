@@ -5,7 +5,9 @@ import JitsiMeet, { JitsiMeetView as RNJitsiMeetView } from 'react-native-jitsi-
 class JitsiMeetView extends React.Component {
 	constructor(props){
 		super(props);
-		
+		this.state={
+			isCall:false
+		}
 	}
 
 	componentDidMount() {
@@ -19,9 +21,10 @@ class JitsiMeetView extends React.Component {
 					avatar: 'https:/gravatar.com/avatar/abc123',
 				};
 				if(this.props.route.params.type){
+					this.setState({isCall:true}) 
 					JitsiMeet.audioCall(url, userInfo);
-					// 
 				}else{
+					this.setState({isCall:true}) 
 					JitsiMeet.call(url, userInfo);
 				}
 			
@@ -33,6 +36,7 @@ class JitsiMeetView extends React.Component {
 
 	componentWillUnmount() {
 		
+		this.setState({isCall:false}) 
 		JitsiMeet.endCall();
 	}
 
@@ -43,6 +47,7 @@ class JitsiMeetView extends React.Component {
 	}
 
 	onConferenceTerminated = () => {
+		this.setState({isCall:false}) 
 		this.props.navigation.navigate('Main')
 	}
 
