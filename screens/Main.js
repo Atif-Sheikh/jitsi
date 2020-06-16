@@ -48,14 +48,8 @@ export default class AnatomyExample extends Component {
       this.setState({roomName:''})
     }
     CreateConference = () =>{
-      if(this.state.roomName == '' || this.state.roomName == ' ')
-      {
-        let id = Math.random()
-
-        this.props.navigation.navigate('Meeting',{id,type:this.state.isEnabled,name:'new user'})
-      }else{
-        this.props.navigation.navigate('Meeting',{id:this.state.roomName,type:this.state.isEnabled,name:'new user'})
-      }
+      let id = Math.random()
+      this.props.navigation.navigate('Meeting',{id,type:this.state.isEnabled,name:'new user'})
       this.setState({roomName:''})
     }
     _onRefresh = () => {
@@ -120,10 +114,10 @@ export default class AnatomyExample extends Component {
             onFocus={()=>{this.setState({isModal:true})}}
             /> 
           </View>
-          {/* {this.state.roomName ? <TouchableOpacity  onPress={()=>{this.jionConference(this.state.roomName)}}>
+          {this.state.roomName ? <TouchableOpacity  onPress={()=>{this.jionConference(this.state.roomName)}}>
             <Text style={styles.JoinBotton}>Join</Text>
-          </TouchableOpacity> : <></>} */}
-          {this.state.isModal ?
+          </TouchableOpacity> : <></>}
+          {!this.state.roomName && this.state.isModal ?
           <View style={styles.modal}>
           <Text style={{textAlign:'center'}}> Enter the name or URL of the room you want to join. You may make a name up,just
                 let the people you are meeting know it so that they enter the same name.
