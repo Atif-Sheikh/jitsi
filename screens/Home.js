@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View ,Text, StyleSheet, TouchableOpacity,TextInput,Image,Platform ,KeyboardAvoidingView  ,SafeAreaView, ScrollView ,Switch} from 'react-native'
+import {View ,Text, StyleSheet, TouchableOpacity,TextInput,Image,Platform ,KeyboardAvoidingView  ,SafeAreaView, ScrollView} from 'react-native'
 import { Container, Header, Title, Content, Footer, FooterTab, Button,Icon, Left, Right, Body,StyleProvider ,  } from 'native-base';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import Share from 'react-native-share';
@@ -64,14 +64,14 @@ toggleSwitch = () => {
               <Left>
                 <TouchableOpacity onPress={()=>{this.props.navigation.openDrawer()}}>
                 <Image
-                  style={{height:16,width:20,marginLeft:5}}
-                  source={require('../assets/m1.png')}
+                  style={{height:35,width:35}}
+                  source={require('../assets/menu.png')}
                 />
                 </TouchableOpacity>
               </Left>
               <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:'50%'}}>
-                  <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:17}}>Video</Text>
-                  {/* <ToggleSwitch
+                  <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Video</Text>
+                  <ToggleSwitch
                     isOn={this.state.isEnabled}
                     onColor=" #2196c4"
                     offColor="#2196c4"
@@ -79,15 +79,8 @@ toggleSwitch = () => {
                     labelStyle={{ color: "black", fontWeight: "900",}}
                     size="medium"
                     onToggle={(isOn) => this.setState({isEnabled:isOn})}
-                  /> */}
-                  <Switch
-                  trackColor={{ false: "#006666", true: "#006666" }}
-                  thumbColor={this.state.isEnabled ? "#81b0ff" : "#81b0ff"}
-                  ios_backgroundColor="#3e3e3e"
-                  onValueChange={this.toggleSwitch}
-                  value={this.state.isEnabled}
                   />
-                  <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:17}}>Voice</Text>
+                  <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Voice</Text>
               </View>
               <Right />
             </Header>
@@ -135,24 +128,24 @@ toggleSwitch = () => {
             <Footer style={{bottom:0,}}>
               <FooterTab  style={{ backgroundColor: "#2ea1f8" ,}}>
                 <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
-                    <TouchableOpacity>
+                    {/* <TouchableOpacity>
                     <Image
-                        style={{height:20,width:22,alignSelf:'center'}}
-                        source={require('../assets/c9.png')}
+                        style={{height:20,width:20,alignSelf:'center'}}
+                        source={require('../assets/h5.png')}
                     />
                       <Text style={{color:'#fff'}}>Recent</Text>
-                    </TouchableOpacity>
-                    {/* <TouchableOpacity>
+                    </TouchableOpacity> */}
+                    <TouchableOpacity>
                     <Image
                         style={{height:20,width:20,alignSelf:'center'}}
                         source={require('../assets/home.png')}
                     />
                       <Text style={{color:'#fff'}}>Home</Text>
-                    </TouchableOpacity> */}
+                    </TouchableOpacity>
                     <TouchableOpacity>
                     <Image
-                        style={{height:20,width:50,alignSelf:'center'}}
-                        source={require('../assets/c8.png')}
+                        style={{height:20,width:20,alignSelf:'center'}}
+                        source={require('../assets/c5.png')}
                     />
                       <Text  style={{color:'#fff'}}>calender</Text>
                     </TouchableOpacity>
