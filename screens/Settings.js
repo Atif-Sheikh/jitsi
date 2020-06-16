@@ -94,7 +94,7 @@ export default class Settings extends Component {
            <Container>
                <Header style={{ backgroundColor: "#2ea1f8" }} androidStatusBarColor="#2ea1f8">
           <Left>
-            <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Main')}}>
+            <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Home')}}>
             <Image
                 style={{height:100,width:20, marginBottom:'50%'}}
                 source={require('../assets/ar.png')}

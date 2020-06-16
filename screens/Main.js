@@ -35,7 +35,7 @@ export default class AnatomyExample extends Component {
         conferenceId:'',
         text:'    MechanecalForcesBoardJust',
         refreshing: false,
-        isModal:false
+
     }
 
     toggleSwitch = () => {
@@ -47,16 +47,8 @@ export default class AnatomyExample extends Component {
       this.props.navigation.navigate('Meeting',{id,type:this.state.isEnabled,name:'new user'})
       this.setState({roomName:''})
     }
-    CreateConference = () =>{
-      let id = Math.random()
-      this.props.navigation.navigate('Meeting',{id,type:this.state.isEnabled,name:'new user'})
-      this.setState({roomName:''})
-    }
     _onRefresh = () => {
       this.setState({refreshing: true});
-      setTimeout(()=>{this.setState({refreshing: false})
-    }
-      ,1000)
       // fetchData().then(() => {
       //   this.setState({refreshing: false});
       // });
@@ -100,8 +92,9 @@ export default class AnatomyExample extends Component {
         </Header>
         <Content style={{backgroundColor:'#006666'}}>
         <ImageBackground source={require('../assets/bg.jpg')} style={styles.container}>
-        <View style={{height:height-135,width:width}}>
-        <Text style={{color:'#fff',padding:10,paddingLeft:'3%',fontSize:18}}>Enter room name</Text>
+        
+        <View style={{height:height}}>
+        <Text style={{color:'#fff',padding:10,paddingLeft:'5%',fontSize:18}}>Enter room name</Text>
           <View style={{alignItems:'center'}}>
           <TextInput
             label='Pick Name'
@@ -111,24 +104,11 @@ export default class AnatomyExample extends Component {
             value={this.state.roomName}
             onChangeText={value => this.setState({ roomName: value })}
             style={styles.textInput}
-            onFocus={()=>{this.setState({isModal:true})}}
             /> 
           </View>
           {this.state.roomName ? <TouchableOpacity  onPress={()=>{this.jionConference(this.state.roomName)}}>
             <Text style={styles.JoinBotton}>Join</Text>
           </TouchableOpacity> : <></>}
-          {!this.state.roomName && this.state.isModal ?
-          <View style={styles.modal}>
-          <Text style={{textAlign:'center'}}> Enter the name or URL of the room you want to join. You may make a name up,just
-                let the people you are meeting know it so that they enter the same name.
-          </Text>
-          <TouchableOpacity onPress={this.CreateConference}>
-            <Text style={styles.createButton}>CREATE / JOIN</Text>
-          </TouchableOpacity>
-          </View> 
-          :<></>
-          }          
-
           <ScrollView
             refreshControl={
               <RefreshControl
@@ -145,8 +125,8 @@ export default class AnatomyExample extends Component {
               <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
                   <TouchableOpacity>
                   <Image
-                      style={{height:20,width:23,alignSelf:'center'}}
-                      source={require('../assets/button.png')}
+                      style={{height:20,width:22,alignSelf:'center'}}
+                      source={require('../assets/c9.png')}
                   />
                     <Text style={{color:'#fff'}}>Recent</Text>
                   </TouchableOpacity>
@@ -159,8 +139,8 @@ export default class AnatomyExample extends Component {
                   </TouchableOpacity> */}
                   <TouchableOpacity>
                   <Image
-                      style={{height:20,width:19,alignSelf:'center'}}
-                      source={require('../assets/calendar.png')}
+                      style={{height:20,width:50,alignSelf:'center'}}
+                      source={require('../assets/c8.png')}
                   />
                   {/* <Icon name='beer' /> */}
                     <Text  style={{color:'#fff'}}>Calender</Text>
@@ -178,7 +158,7 @@ const styles = StyleSheet.create({
      height:50,
      borderWidth:2,
      borderColor:'#fff',
-     width:'95%',
+     width:'90%',
      borderRadius:5,
      fontSize:22
     },
@@ -195,25 +175,11 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       resizeMode: "cover",
-      // justifyContent: "center"
+    // justifyContent: "center"
       // resizeMode: 'stretch'
       // remove width and height to override fixed static size
       width:'100%' ,
-      height: '100%', 
-    },
-    modal:{
-      justifyContent:'center',
-      margin:10,
-      backgroundColor:'#fff',
-      alignItems:'center',
-      padding:20,
-      borderRadius:5
-    },
-    createButton:{
-      backgroundColor:'#2ea1f8',
-      color:'#fff',
-      marginTop:10,
-      paddingHorizontal:20,
-      borderRadius:5,
-      paddingVertical:5}
+      height: '100%',
+      // position:'absolute'
+    }
    })

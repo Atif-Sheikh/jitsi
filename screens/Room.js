@@ -28,11 +28,10 @@ const Drawer = createDrawerNavigator();
 const  CustomDrawerContent=({navigation})=> {
   return (
     <DrawerContentScrollView >
-      <View style={{justifyContent:'center',width:'100%',alignItems:'center',backgroundColor:'#2ea1f8',height:140,marginTop:-5}}> 
+      <View style={{justifyContent:'center',width:'100%',alignItems:'center',backgroundColor:'#2ea1f8',height:120,marginTop:-5}}> 
          <Image style={{height:100,width:100,borderRadius:50}} source={require('../assets/p1.png')}/>
-         <Text style={{color:'#fff',marginVertical:10}}>me</Text>
       </View>
-      <TouchableOpacity onPress={()=>{navigation.navigate('Setting')}} style={{marginVertical:15,flexDirection:'row',marginTop:30,width:'100%'}}>
+      <TouchableOpacity onPress={()=>{navigation.navigate('Settings')}} style={{marginVertical:15,flexDirection:'row',marginTop:30,width:'100%'}}>
         <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/s3.png')}/>
         <Text style={{fontWeight:'bold'}}> Settings</Text>
       </TouchableOpacity>
@@ -59,14 +58,14 @@ class Room extends React.Component {
     render(){
         return (
             <NavigationContainer independent={true} >
-                <Drawer.Navigator initialRouteName="Main" drawerContent={props => <CustomDrawerContent {...props}/>}>
+                <Drawer.Navigator initialRouteName="Home" drawerContent={props => <CustomDrawerContent {...props}/>}>
                 <Drawer.Screen name="Main" component={Main} />
-                {/* <Drawer.Screen name="Home" component={Home} /> */}
+                <Drawer.Screen name="Home" component={Home} />
+                <Drawer.Screen name="Settings" component={Settings} />
                 <Drawer.Screen name="Terms" component={Terms} />
                 <Drawer.Screen name="Privacy" component={Privacy} />
                 <Drawer.Screen name="Help" component={Help} />
                 <Drawer.Screen name="Meeting" component={Meetin} />
-                <Drawer.Screen name="Setting" component={Settings} />
                 </Drawer.Navigator>
           </NavigationContainer>
         )
