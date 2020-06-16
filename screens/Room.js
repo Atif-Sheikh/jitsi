@@ -26,9 +26,6 @@ import Home from './Home'
 const Drawer = createDrawerNavigator();
 
 const  CustomDrawerContent=({navigation})=> {
-  const link = ()=>{
-    Linking.openURL("https://jitsi.org")
-  }
   return (
     <DrawerContentScrollView >
       <View style={{justifyContent:'center',width:'100%',alignItems:'center',backgroundColor:'#2ea1f8',height:140,marginTop:-5}}> 
@@ -39,15 +36,15 @@ const  CustomDrawerContent=({navigation})=> {
         <Image style={{height:20,width:20,marginHorizontal:8}} source={require('../assets/s3.png')}/>
         <Text style={{fontWeight:'bold'}}> Settings</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+      <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
          <Image style={{height:18,width:18,marginHorizontal:8}} source={require('../assets/n4.png')}/>
         <Text style={{fontWeight:'bold'}}> Terms</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+      <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
       <Image style={{height:18,width:18,marginHorizontal:8}} source={require('../assets/n4.png')}/>
         <Text style={{fontWeight:'bold'}}> Privacy</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>{}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
+      <TouchableOpacity onPress={()=>{Linking.openURL("https://jitsi.org")}} style={{marginVertical:15,flexDirection:'row',width:'100%'}}>
       <Image style={{height:25,width:25,marginHorizontal:7}} source={require('../assets/q2.png')}/>
         <Text style={{fontWeight:'bold',marginTop:1}}> Help</Text>
       </TouchableOpacity>
@@ -57,18 +54,19 @@ const  CustomDrawerContent=({navigation})=> {
 }
 
 class Room extends React.Component {
-  
+  URL = "https://google.com";
+
     render(){
         return (
             <NavigationContainer independent={true} >
                 <Drawer.Navigator initialRouteName="Main" drawerContent={props => <CustomDrawerContent {...props}/>}>
                 <Drawer.Screen name="Main" component={Main} />
-                {/* <Drawer.Screen name="Home" component={Meetin} options={{title:'Home'}}/> */}
-                <Drawer.Screen name="Meeting" component={Meetin} />
-                <Drawer.Screen name="Setting" component={Settings} />
+                {/* <Drawer.Screen name="Home" component={Home} /> */}
                 <Drawer.Screen name="Terms" component={Terms} />
                 <Drawer.Screen name="Privacy" component={Privacy} />
                 <Drawer.Screen name="Help" component={Help} />
+                <Drawer.Screen name="Meeting" component={Meetin} />
+                <Drawer.Screen name="Setting" component={Settings} />
                 </Drawer.Navigator>
           </NavigationContainer>
         )

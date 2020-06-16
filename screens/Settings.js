@@ -107,10 +107,10 @@ export default class Settings extends Component {
           <Right />
         </Header>
             <View style={{justifyContent:'center', marginTop: 10}}>
-                <View style={{}}>
+                <View style={{marginHorizontal:8}}>
                     <Text style={styles.Heading}>Profile</Text>
-                    <Text style={{padding:2,fontWeight:'bold',marginVertical:5,marginHorizontal:3}}>Display name</Text>
-                    <View style={{marginHorizontal:3}}>
+                    <Text style={{padding:2,fontWeight:'bold',marginVertical:5}}>Display name</Text>
+                    <View style={{}}>
                     <TextInput
                         label='Name'
                         placeholder='Name'
@@ -120,8 +120,8 @@ export default class Settings extends Component {
                         style={styles.textInput}
                         /> 
                     </View>
-                    <Text  style={{padding:2, marginTop: 5, fontWeight:'bold',marginVertical:5,marginHorizontal:3}}>Email</Text>
-                    <View style={{marginHorizontal:3}}>
+                    <Text  style={{padding:2, marginTop: 5, fontWeight:'bold',marginVertical:5}}>Email</Text>
+                    <View style={{}}>
                     <TextInput
                         label='Email'
                         placeholder='Email'
