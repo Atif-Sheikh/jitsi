@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View ,Text, StyleSheet, TouchableOpacity,TextInput,Image,Platform ,KeyboardAvoidingView  ,SafeAreaView, ScrollView} from 'react-native'
+import {View ,Text, StyleSheet, TouchableOpacity,TextInput,Image,Platform ,KeyboardAvoidingView  ,} from 'react-native'
 import { Container, Header, Title, Content, Footer, FooterTab, Button,Icon, Left, Right, Body,StyleProvider ,  } from 'native-base';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import Share from 'react-native-share';
@@ -61,97 +61,99 @@ toggleSwitch = () => {
           <StyleProvider style={getTheme(material)}>
           <Container>
             <Header style={{ backgroundColor: "#2ea1f8" }} androidStatusBarColor="#2ea1f8">
-              <Left>
-                <TouchableOpacity onPress={()=>{this.props.navigation.openDrawer()}}>
-                <Image
-                  style={{height:35,width:35}}
-                  source={require('../assets/menu.png')}
-                />
-                </TouchableOpacity>
-              </Left>
-              <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:'50%'}}>
-                  <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Video</Text>
-                  <ToggleSwitch
-                    isOn={this.state.isEnabled}
-                    onColor=" #2196c4"
-                    offColor="#2196c4"
-                    thumbColor={this.state.isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                    labelStyle={{ color: "black", fontWeight: "900",}}
-                    size="medium"
-                    onToggle={(isOn) => this.setState({isEnabled:isOn})}
-                  />
-                  <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Voice</Text>
-              </View>
-              <Right />
-            </Header>
-              <View style={{flex:1,}}>
-                  <View style={styles.head}> 
-                    <Image
-                      style={[styles.tinyLogo]}
-                      source={require('../assets/logo.jpeg')}
+          <Left>
+            <TouchableOpacity onPress={()=>{this.props.navigation.openDrawer()}}>
+            <Image
+                style={{height:35,width:35}}
+                source={require('../assets/menu.png')}
+            />
+            </TouchableOpacity>
+          </Left>
+                <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:'50%'}}>
+                    <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Video</Text>
+                    <ToggleSwitch
+                      isOn={this.state.isEnabled}
+                      onColor=" #2196c4"
+                      offColor="#2196c4"
+                      thumbColor={this.state.isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                      labelStyle={{ color: "black", fontWeight: "900",}}
+                      size="medium"
+                      onToggle={(isOn) => this.setState({isEnabled:isOn})}
                     />
-                    <Text style={{fontSize:30,color:'#000066',fontWeight:'bold'}}>Create or join </Text> 
-                    <Text style={{fontSize:30,color:'#000066',fontWeight:'bold'}}>a meating</Text>
-                  </View>
-                  <View style={styles.bottom}>
+                    <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Voice</Text>
+                </View>
+          <Right />
+        </Header>
+            <View style={{flex:1,backgroundColor:'#fff'}}>
+                <View style={[styles.head,{display:this.state.border ? 'flex' : 'none' ,}]}>
+                     <Image
+                        style={[styles.tinyLogo]}
+                        source={require('../assets/logo.jpeg')}
+                    />
+                    <Text style={{fontSize:30,color:'#000066'}}>Create or join </Text> 
+                    <Text style={{fontSize:30,color:'#000066'}}>a meating</Text>
+                </View>
+                <View style={styles.bottom}>
                     <TouchableOpacity 
-                      style={[styles.botton,{backgroundColor:'#2ea1f8',position:'relative',flexDirection:'row'}]} 
-                      onPress={()=>{Share.open(this.options);}}
-                    >
-                      <Image
-                        style={{height:21,width:17,alignSelf:'center',marginHorizontal:5}}
-                        source={require('../assets/share.png')}
-                      />
-                      <Text style={{color:'#fff',fontSize:17}}> Invite Users </Text>
+                    style={[styles.botton,{backgroundColor:'#2ea1f8',position:'relative',flexDirection:'row'}]} 
+                    onPress={()=>{Share.open(this.options);}}>
+
+                        <Image
+                            style={{height:24,width:20,alignSelf:'center',marginHorizontal:5}}
+                            source={require('../assets/share.png')}
+                        />
+                        <Text style={{color:'#fff'}}> Invite Users </Text>
                     </TouchableOpacity>
                     <TextInput
                       label='Pick Name'
-                      placeholder='  Pick Name'
+                      placeholder='Pick Name'
                       onFocus={ () => this.setState({border:false})}
                       onBlur={ () => this.setState({border:true}) }
                       onChangeText={value => this.setState({ pickName: value })}
                       style={[styles.textInput]}
                       value={this.state.pickName}
-                    />  
+				            />  
                     <TouchableOpacity 
-                      style={[styles.botton,{backgroundColor: this.state.pickName ? '#2ea1f8' : '#ccc',position:'relative'}]} 
-                      onPress={()=>{
-                        this.state.pickName.length >= 1 &&  this.createMeeting(this.state.pickName)
+                    style={[styles.botton,{backgroundColor: this.state.pickName ? '#2ea1f8' : '#ccc',position:'relative'}]} 
+                    onPress={()=>{
+                      this.state.pickName.length >= 1 &&  this.createMeeting(this.state.pickName)
                     }} >
-                    <Text style={{color:'#fff',fontSize:17}}> Create the meating </Text>
-                    </TouchableOpacity>
-                  </View>
-                <TouchableOpacity onPress={()=>{ this.conference() }}>
-                <Text style={styles.bottomButton}> rejoindre une réunion </Text>
-              </TouchableOpacity>
-              </View>
-            <Footer style={{bottom:0,}}>
-              <FooterTab  style={{ backgroundColor: "#2ea1f8" ,}}>
-                <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
-                    {/* <TouchableOpacity>
-                    <Image
-                        style={{height:20,width:20,alignSelf:'center'}}
-                        source={require('../assets/h5.png')}
-                    />
-                      <Text style={{color:'#fff'}}>Recent</Text>
-                    </TouchableOpacity> */}
-                    <TouchableOpacity>
-                    <Image
-                        style={{height:20,width:20,alignSelf:'center'}}
-                        source={require('../assets/home.png')}
-                    />
-                      <Text style={{color:'#fff'}}>Home</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                    <Image
-                        style={{height:20,width:20,alignSelf:'center'}}
-                        source={require('../assets/c5.png')}
-                    />
-                      <Text  style={{color:'#fff'}}>calender</Text>
+                        <Text style={{color:'#fff'}}> Create the meating </Text>
                     </TouchableOpacity>
                 </View>
-              </FooterTab>
-            </Footer>
+                {/* <Text style={{alignSelf:'center',fontSize:12}}>Join a meeting link is the text bellow : rejoindre une réunion </Text> */}
+                <TouchableOpacity onPress={()=>{ this.conference() }}>
+                  <Text style={styles.bottomButton}> rejoindre une réunion </Text>
+                </TouchableOpacity>
+            </View>
+            <Footer style={{bottom:0,}}>
+          <FooterTab  style={{ backgroundColor: "#2ea1f8" ,}}>
+              <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
+                  {/* <TouchableOpacity>
+                  <Image
+                      style={{height:20,width:20,alignSelf:'center'}}
+                      source={require('../assets/h5.png')}
+                  />
+                    <Text style={{color:'#fff'}}>Recent</Text>
+                  </TouchableOpacity> */}
+                  <TouchableOpacity>
+                  <Image
+                      style={{height:20,width:20,alignSelf:'center'}}
+                      source={require('../assets/home.png')}
+                  />
+                    <Text style={{color:'#fff'}}>Home</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                  <Image
+                      style={{height:20,width:20,alignSelf:'center'}}
+                      source={require('../assets/c5.png')}
+                  />
+                  {/* <Icon name='beer' /> */}
+                    <Text  style={{color:'#fff'}}>calender</Text>
+                  </TouchableOpacity>
+              </View>
+          </FooterTab>
+        </Footer>
           </Container> 
           </StyleProvider>   
         )
@@ -161,7 +163,7 @@ const styles=StyleSheet.create({
     head:{
         flex:3,
         alignItems: 'center',
-        justifyContent: 'center',
+		    justifyContent: 'center',
     },
     bottom:{
         flex:2,
@@ -171,9 +173,7 @@ const styles=StyleSheet.create({
         backgroundColor:'#f5f5f0',
         marginHorizontal:'10%',
         borderRadius:10,
-        marginBottom:15,
-        minHeight:180,
-        maxHeight:200,
+        marginBottom:20,
     },
     botton:{
         width:'90%',
@@ -185,7 +185,6 @@ const styles=StyleSheet.create({
     tinyLogo:{
         height:100,
         width:'100%',
-        // marginTop:'10%'
     },
     bottomButton:{
       alignSelf:'center',
@@ -202,16 +201,6 @@ const styles=StyleSheet.create({
       width:'90%',
       borderRadius:10,
       marginTop:5,
-      fontSize:16,
-      fontWeight:'bold',
       
      },
-     container: {
-      flex: 1,
-      // marginTop: Constants.statusBarHeight,
-    },
-    scrollView: {
-      backgroundColor: 'pink',
-      // marginHorizontal: 20,
-    },
 })
