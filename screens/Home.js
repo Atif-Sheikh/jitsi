@@ -1,20 +1,15 @@
 import React, { Component } from 'react'
-import {View ,Text, StyleSheet, TouchableOpacity,TextInput,Image,Platform ,KeyboardAvoidingView  ,} from 'react-native'
-import { Container, Header, Title, Content, Footer, FooterTab, Button,Icon, Left, Right, Body,StyleProvider ,  } from 'native-base';
+import {View ,Text, StyleSheet, TouchableOpacity,TextInput,Image,Platform ,} from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import Share from 'react-native-share';
-import ToggleSwitch from 'toggle-switch-react-native'
+
 // import { shareAlt } from '@fortawesome/free-solid-svg-icons'
 import Room from './Room'
-import getTheme from '../native-base-theme/components';
-import material from '../native-base-theme/variables/material';
+import App from '../App'
 
 export default class Home extends Component {
     state={
-        pickName:'',
-        isEnabled:false,
-        Name:'',
-        border:true
+        pickName:''
     }
  url = 'https://awesome.contents.com/';
  title = 'Awesome Contents';
@@ -24,14 +19,40 @@ export default class Home extends Component {
   android: {
     activityItemSources: [
       { // For sharing url with custom title.
-        placeholderItem: { type: 'url', content: 'https://awesome.contents.com/' },
+        placeholderItem: { type: 'url', content: this.url },
         item: {
-          default: { type: 'url', content:'https://awesome.contents.com/'},
+          default: { type: 'url', content: this.url },
         },
         subject: {
-          default: 'Awesome Contents',
+          default: this.title,
         },
-        linkMetadata: { originalUrl: 'https://awesome.contents.com/'  },
+        linkMetadata: { originalUrl: this.url,  },
+      },
+      { // For sharing text.
+        placeholderItem: { type: 'text', content: this.message },
+        item: {
+          default: { type: 'text', content: this.message },
+          message: null, // Specify no text to share via Messages app.
+        },
+        linkMetadata: { // For showing app icon on share preview.
+           title: this.message
+        },
+      },
+      { // For using custom icon instead of default text icon at share preview when sharing with message.
+        placeholderItem: {
+          type: 'url',
+          content: this.icon
+        },
+        item: {
+          default: {
+            type: 'text',
+            content: `${this.message} ${tj=this.url}`
+          },
+        },
+        linkMetadata: {
+           title:this.message,
+           icon: this.icon
+        }
       },
     ],
   },
@@ -44,135 +65,70 @@ export default class Home extends Component {
 
 conference = () => {
   console.log('param name')
-  this.props.navigation.navigate('Main')
+  this.props.navigation.navigate('Room')
 }
 createMeeting = (id) =>{
-  
-  this.props.navigation.navigate('Meeting',{id,type:this.state.isEnabled,name:'new user'})
+
+  this.props.navigation.navigate('Meeting',{id,type:false})
   this.setState({pickName:''})
 }
-toggleSwitch = () => {
-  this.setState({isEnabled:!this.state.isEnabled})
-}
     render() {
-      console.log(this.state)
         return (
-          <StyleProvider style={getTheme(material)}>
-          <Container>
-            <Header style={{ backgroundColor: "#2ea1f8" }} androidStatusBarColor="#2ea1f8">
-          <Left>
-            <TouchableOpacity onPress={()=>{this.props.navigation.openDrawer()}}>
-            <Image
-                style={{height:35,width:35}}
-                source={require('../assets/menu.png')}
-            />
-            </TouchableOpacity>
-          </Left>
-                <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:'50%'}}>
-                    <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Video</Text>
-                    <ToggleSwitch
-                      isOn={this.state.isEnabled}
-                      onColor=" #2196c4"
-                      offColor="#2196c4"
-                      thumbColor={this.state.isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                      labelStyle={{ color: "black", fontWeight: "900",}}
-                      size="medium"
-                      onToggle={(isOn) => this.setState({isEnabled:isOn})}
-                    />
-                    <Text style={{color:'#fff',fontWeight:'bold',marginHorizontal:5,fontSize:16}}>Voice</Text>
-                </View>
-          <Right />
-        </Header>
-            <View style={{flex:1,backgroundColor:'#fff'}}>
-                <View style={[styles.head,{display:this.state.border ? 'flex' : 'none' ,}]}>
+            <View style={{flex:1,backgroundColor:'#f5f5f0'}}>
+                <View style={styles.head}>
                      <Image
-                        style={[styles.tinyLogo]}
-                        source={require('../assets/logo.jpeg')}
+                        style={styles.tinyLogo}
+                        source={require('../assets/conference-icon.png')}
                     />
-                    <Text style={{fontSize:30,color:'#000066'}}>Create or join </Text> 
-                    <Text style={{fontSize:30,color:'#000066'}}>a meating</Text>
+                    <Text style={{fontSize:30,color:'green'}}>Create or join meating</Text> 
                 </View>
                 <View style={styles.bottom}>
                     <TouchableOpacity 
-                    style={[styles.botton,{backgroundColor:'#2ea1f8',position:'relative',flexDirection:'row'}]} 
+                    style={[styles.botton,{backgroundColor:'#008000'}]} 
                     onPress={()=>{Share.open(this.options);}}>
 
-                        <Image
-                            style={{height:24,width:20,alignSelf:'center',marginHorizontal:5}}
-                            source={require('../assets/share.png')}
-                        />
+                        {/* <FontAwesomeIcon icon={ shareAlt } /> */}
                         <Text style={{color:'#fff'}}> Invite Users </Text>
                     </TouchableOpacity>
                     <TextInput
                       label='Pick Name'
                       placeholder='Pick Name'
-                      onFocus={ () => this.setState({border:false})}
-                      onBlur={ () => this.setState({border:true}) }
+                      // returnKeyType='next'
                       onChangeText={value => this.setState({ pickName: value })}
-                      style={[styles.textInput]}
+                      style={{height:60}}
                       value={this.state.pickName}
 				            />  
                     <TouchableOpacity 
-                    style={[styles.botton,{backgroundColor: this.state.pickName ? '#2ea1f8' : '#ccc',position:'relative'}]} 
+                    style={[styles.botton,{backgroundColor: this.state.pickName ? '#008000' : '#ccc'}]} 
                     onPress={()=>{
                       this.state.pickName.length >= 1 &&  this.createMeeting(this.state.pickName)
                     }} >
                         <Text style={{color:'#fff'}}> Create the meating </Text>
                     </TouchableOpacity>
                 </View>
-                {/* <Text style={{alignSelf:'center',fontSize:12}}>Join a meeting link is the text bellow : rejoindre une réunion </Text> */}
                 <TouchableOpacity onPress={()=>{ this.conference() }}>
                   <Text style={styles.bottomButton}> rejoindre une réunion </Text>
                 </TouchableOpacity>
             </View>
-            <Footer style={{bottom:0,}}>
-          <FooterTab  style={{ backgroundColor: "#2ea1f8" ,}}>
-              <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
-                  <TouchableOpacity>
-                  <Image
-                      style={{height:20,width:20,alignSelf:'center'}}
-                      source={require('../assets/h5.png')}
-                  />
-                    <Text style={{color:'#fff'}}>Recent</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                  <Image
-                      style={{height:20,width:20,alignSelf:'center'}}
-                      source={require('../assets/home.png')}
-                  />
-                    <Text style={{color:'#fff'}}>Home</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                  <Image
-                      style={{height:20,width:20,alignSelf:'center'}}
-                      source={require('../assets/c5.png')}
-                  />
-                  {/* <Icon name='beer' /> */}
-                    <Text  style={{color:'#fff'}}>calender</Text>
-                  </TouchableOpacity>
-              </View>
-          </FooterTab>
-        </Footer>
-          </Container> 
-          </StyleProvider>   
         )
     }
 }
 const styles=StyleSheet.create({
     head:{
-        flex:3,
+        flex:4,
         alignItems: 'center',
-		    justifyContent: 'center',
+		justifyContent: 'center',
     },
     bottom:{
         flex:2,
         alignItems: 'center',
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-around',
         // width:'90%',
-        backgroundColor:'#f5f5f0',
+        backgroundColor:'#fff',
         marginHorizontal:'10%',
         borderRadius:10,
         marginBottom:20,
+        
     },
     botton:{
         width:'90%',
@@ -183,23 +139,13 @@ const styles=StyleSheet.create({
     },
     tinyLogo:{
         height:100,
-        width:'100%',
+        width:100,
     },
     bottomButton:{
       alignSelf:'center',
       justifyContent:'center',
       height:40,
-      color:'#000066',
-      fontSize:25,
-    },
-    textInput: {
-      // color: '#fff',
-      height:50,
-      borderWidth:2,
-      borderColor:'#ccc',
-      width:'90%',
-      borderRadius:10,
-      marginTop:5,
-      
-     },
+      color:'green',
+      fontSize:25
+    }
 })
