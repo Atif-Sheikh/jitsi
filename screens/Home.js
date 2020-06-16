@@ -50,7 +50,6 @@ createMeeting = (id) =>{
   
   this.props.navigation.navigate('Meeting',{id,type:this.state.isEnabled,name:'new user'})
   this.setState({pickName:''})
-  this.setState({border:true})
 }
 toggleSwitch = () => {
   this.setState({isEnabled:!this.state.isEnabled})
@@ -129,13 +128,13 @@ toggleSwitch = () => {
             <Footer style={{bottom:0,}}>
           <FooterTab  style={{ backgroundColor: "#2ea1f8" ,}}>
               <View style={{flexDirection:'row',alignItems:'center',width:'100%',justifyContent:'space-evenly'}}>
-                  {/* <TouchableOpacity>
+                  <TouchableOpacity>
                   <Image
                       style={{height:20,width:20,alignSelf:'center'}}
                       source={require('../assets/h5.png')}
                   />
                     <Text style={{color:'#fff'}}>Recent</Text>
-                  </TouchableOpacity> */}
+                  </TouchableOpacity>
                   <TouchableOpacity>
                   <Image
                       style={{height:20,width:20,alignSelf:'center'}}
