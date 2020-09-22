@@ -5,7 +5,7 @@ export default class Home extends Component {
   state = {
     pickName: ''
   }
-  url = 'https://awesome.contents.com/';
+  url = 'https://meet.wolwou.com/';
   title = 'Awesome Contents';
   message = 'Please check this out.';
   icon = 'data:<data_type>/<file_extension>;base64,<base64_data>';
@@ -72,7 +72,7 @@ export default class Home extends Component {
         <View style={styles.head}>
           <Image
             style={styles.tinyLogo}
-            source={require('../assets/conference-icon.png')}
+            source={require('../assets/Wolwou.png')}
           />
           <Text style={{ fontSize: 30, color: 'green' }}>Create or join meating</Text>
         </View>
@@ -97,7 +97,7 @@ export default class Home extends Component {
             onPress={() => {
               this.state.pickName.length >= 1 && this.createMeeting(this.state.pickName)
             }} >
-            <Text style={{ color: '#fff' }}> Create the meating </Text>
+            <Text style={{ color: '#fff' }}> Create the meeting </Text>
           </TouchableOpacity>
         </View>
       </View>
